@@ -79,10 +79,11 @@ function draw() {
 function drawGrid() {
   stroke(100);
   strokeWeight(0.5);
+  let h = 360 * scaleCanvas;
   for (let i = 0; i < width; i += width / 3) {
-    line(i, 0, i, height);
+    line(i, 0, i, h);
   }
-  for (let i = 0; i < height; i += height / 3) {
+  for (let i = 0; i < h; i += h / 3) {
     line(0, i, width, i);
   }
 }
