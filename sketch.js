@@ -2,10 +2,13 @@ let cam;
 let poseNet;
 let poses;
 let mode = 0;
+let scaleCanvas = 1.0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   console.log('canvas:', windowWidth, windowHeight);
+  scaleCanvas = windowWidth / 640;
+  console.log('scaleCanvas:', scaleCanvas);
   // mobile device
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     const camOptions = {
@@ -38,11 +41,16 @@ function modelLoaded() {
 }
 
 function mouseReleased() {
-    mode = (mode + 1) % 3;
+  mode = (mode + 1) % 3;
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  scaleCanvas = windowWidth / 640;
 }
 
 function draw() {
-  scale(1.05);
+  scale(scaleCanvas);
 
   if (mode === 0) {
     image(cam, 0, 0);
