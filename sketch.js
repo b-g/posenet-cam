@@ -51,9 +51,10 @@ function windowResized() {
 
 function draw() {
   scale(scaleCanvas);
+  background(0);
+  image(cam, 0, 0);
 
   if (mode === 0) {
-    image(cam, 0, 0);
     background(0, 200);
     if (poses) {
       drawFaceLines(poses);
@@ -62,15 +63,12 @@ function draw() {
       drawKeypoints(poses);
     }
   } else if (mode === 1) {
-    image(cam, 0, 0);
     if (poses) {
       drawFaceLines(poses);
       drawSkeleton(poses);
       drawNeck(poses);
       drawKeypoints(poses);
     }
-  } else if (mode === 2) {
-    image(cam, 0, 0);
   }
 }
 
