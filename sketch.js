@@ -50,6 +50,7 @@ function windowResized() {
 }
 
 function draw() {
+  push();
   scale(scaleCanvas);
   background(0);
   image(cam, 0, 0);
@@ -69,6 +70,20 @@ function draw() {
       drawNeck(poses);
       drawKeypoints(poses);
     }
+  }
+  pop();
+
+  drawGrid();
+}
+
+function drawGrid() {
+  stroke(100);
+  strokeWeight(0.5);
+  for (let i = 0; i < width; i += width / 3) {
+    line(i, 0, i, height);
+  }
+  for (let i = 0; i < height; i += height / 3) {
+    line(0, i, width, i);
   }
 }
 
